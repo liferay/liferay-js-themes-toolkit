@@ -10,7 +10,8 @@ const {
 const themeUtil = require('../../util');
 
 const moduleNamesMap = {
-	standard: 'liferay-frontend-theme-standard-web',
+	admin: 'liferay-frontend-theme-admin-web',
+	classic: 'liferay-frontend-theme-classic-web',
 	mixins: 'liferay-frontend-common-css',
 	styled: 'liferay-frontend-theme-styled',
 	unstyled: 'liferay-frontend-theme-unstyled',
@@ -39,7 +40,11 @@ function getBaseThemeDependencies(baseThemePath) {
 		dependencies.push(path.resolve(baseThemePath, 'src/**/*'));
 
 		return getBaseThemeDependencies(baseThemePath, dependencies);
-	} else if (baseTheme === 'styled' || baseTheme === 'standard') {
+	} else if (
+		baseTheme === 'styled' ||
+		baseTheme === 'classic' ||
+		baseTheme === 'admin'
+	) {
 		dependencies.splice(
 			1,
 			0,
@@ -49,12 +54,23 @@ function getBaseThemeDependencies(baseThemePath) {
 			)
 		);
 
-		if (baseTheme === 'standard') {
+		if (baseTheme === 'classic') {
 			dependencies.splice(
 				2,
 				0,
 				path.join(
 					themeUtil.resolveDependency(getDependencyName('classic')),
+					baseThemeGlob
+				)
+			);
+		}
+
+		if (baseTheme === 'admin') {
+			dependencies.splice(
+				2,
+				0,
+				path.join(
+					themeUtil.resolveDependency(getDependencyName('admin')),
 					baseThemeGlob
 				)
 			);
