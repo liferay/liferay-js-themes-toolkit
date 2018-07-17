@@ -34,7 +34,7 @@
     "lodash": "^3.10.0",
     "minimist": "^1.1.0",
     "node-bourbon": "4.2.3",
-    "npm-keyword": "^5.0.0",
+    "npms-keyword": "^1.2.0",
     "package-json": "^5.0.0",
     "plugin-error": "^1.0.1",
     "portfinder": "^1.0.13",
