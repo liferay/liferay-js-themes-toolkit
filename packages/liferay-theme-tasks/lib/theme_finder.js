@@ -3,7 +3,7 @@
 let _ = require('lodash');
 let async = require('async');
 let globby = require('globby');
-let npmKeyword = require('npm-keyword');
+let npmKeyword = require('npms-keyword');
 let packageJson = require('package-json');
 let path = require('path');
 let spawn = require('cross-spawn');
@@ -168,10 +168,24 @@ module.exports = {
 
 	_matchesSearchTerms: function(pkg, searchTerms) {
 		let description = pkg.description;
+		let threshold = 0.7;
+		let countMatchesName = 0;
+		let countMatchesDesc = 0;
+
+		let searchTermsArr = searchTerms.split(/\s/g);
+		searchTermsArr.map(term => {
+			if (pkg.name.toLowerCase().indexOf(term) > -1) {
+				countMatchesName++;
+			}
+
+			if (description && description.toLowerCase().indexOf(term) > -1) {
+				countMatchesDesc++;
+			}
+		});
 
 		return (
-			pkg.name.indexOf(searchTerms) > -1 ||
-			(description && description.indexOf(searchTerms) > -1)
+			countMatchesName / searchTermsArr.length > threshold ||
+			countMatchesDesc / searchTermsArr.length > threshold
 		);
 	},
 
