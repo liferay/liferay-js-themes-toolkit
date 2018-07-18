@@ -178,13 +178,15 @@ module.exports = {
 				countMatchesName++;
 			}
 
-			if (description && (description.toLowerCase().indexOf(term) > -1)) {
+			if (description && description.toLowerCase().indexOf(term) > -1) {
 				countMatchesDesc++;
 			}
 		});
 
-		return ((countMatchesName / searchTermsArr.length) > threshold) ||
-            ((countMatchesDesc / searchTermsArr.length) > threshold);
+		return (
+			countMatchesName / searchTermsArr.length > threshold ||
+			countMatchesDesc / searchTermsArr.length > threshold
+		);
 	},
 
 	_reduceModuleResults: function(modules, config) {
