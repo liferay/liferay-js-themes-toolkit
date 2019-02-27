@@ -256,8 +256,6 @@ Version of Liferay Portal this theme is intended for.
 
 ## Additional Theme Dependencies
 
-In order for themes to successfully build, they must declare additional dependencies such as [liferay-frontend-theme-unstyled](https://www.npmjs.com/package/liferay-frontend-theme-unstyled) and [liferay-frontend-theme-styled](https://www.npmjs.com/package/liferay-frontend-theme-styled) in their package.json file.
-
-These additional dependencies are automatically to themes created with the [Theme Generator](https://github.com/liferay/generator-liferay-theme).
+In order for themes to successfully build, they must declare additional dependencies such as [liferay-frontend-theme-unstyled](https://www.npmjs.com/package/liferay-frontend-theme-unstyled) and [liferay-frontend-theme-styled](https://www.npmjs.com/package/liferay-frontend-theme-styled) in their package.json file. These additional dependencies are automatically added to themes created with the [Theme Generator](https://github.com/liferay/generator-liferay-theme).
 
 MIT
