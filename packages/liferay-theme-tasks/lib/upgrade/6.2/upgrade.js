@@ -4,6 +4,7 @@ const ConvertBootstrapCLI = require('convert-bootstrap-2-to-3').constructor;
 const _ = require('lodash');
 const colors = require('ansi-colors');
 const del = require('del');
+const dependencies = require('../../dependencies');
 const fs = require('fs-extra');
 const globby = require('globby');
 const path = require('path');
@@ -79,9 +80,9 @@ module.exports = function(options) {
 	gulp.task('upgrade:dependencies', function(cb) {
 		lfrThemeConfig.removeDependencies(['liferay-theme-deps-6.2']);
 		lfrThemeConfig.setDependencies(
-			{
-				'liferay-theme-deps-7.0': '8.0.0-rc.3',
-			},
+			Object.assign({}, dependencies['7.0'], {
+				'liferay-theme-tasks': '8.0.0-rc.3',
+			}),
 			true
 		);
 

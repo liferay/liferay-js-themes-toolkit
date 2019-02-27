@@ -13,5 +13,8 @@
 	},
 	"main": "package.json",
 	"name": "<%= themeDirName %>",
+	"scripts": {
+		"install": "node node_modules/liferay-theme-deps-normalize/index.js"
+	},
 	"version": "<%= packageVersion %>"
 }

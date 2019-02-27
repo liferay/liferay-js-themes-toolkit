@@ -1,9 +1,9 @@
-var chalk = require('chalk');
+const chalk = require('chalk');
+
+const dependencies = require('liferay-theme-tasks/lib/dependencies');
 
 function _getDevDependencies() {
-	return `\t"gulp": "3.9.1",
-    \t"liferay-theme-tasks": "8.0.0-rc.3",
-    \t"liferay-theme-deps-7.2": "8.0.0-rc.3"`;
+	return dependencies.stringify();
 }
 
 function _getTemplateLanguageChoices(answers) {
