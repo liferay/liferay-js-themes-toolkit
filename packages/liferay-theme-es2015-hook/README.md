@@ -25,9 +25,7 @@ After npm is done installing the dependency you must add the hook to the `lifera
 		"version": "7.0"
 	},
 	"devDependencies": {
-		"gulp": "^3.8.10",
-		"liferay-theme-tasks": "*",
-		"liferay-theme-deps-7.0": "*"
+		"...": "*"
 	},
 	"dependencies": {
 		"liferay-theme-es2015-hook": "^1.0.0"
