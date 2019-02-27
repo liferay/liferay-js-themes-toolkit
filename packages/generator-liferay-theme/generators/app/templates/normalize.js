@@ -41,4 +41,6 @@ function normalizeTemplates(config) {
 	insertInjectTag(portalNormalPath + '.vm', templateRegex, templateReplacer);
 }
 
-module.exports = normalize;
+normalize({
+	unstyled: 'liferay-frontend-theme-unstyled',
+});
