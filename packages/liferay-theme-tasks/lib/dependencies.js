@@ -11,12 +11,14 @@ const BASE_DEPENDENCIES = Object.freeze({
 });
 
 /**
- * Dependencies for each version of Liferay. Currently, uniform across versions
- * 7.0 through 7.2.
+ * Dependencies for each version of Liferay.
  */
 const DEPENDENCIES = {
 	'BASE': BASE_DEPENDENCIES,
-	'7.0': BASE_DEPENDENCIES,
+	'7.0': Object.assign({}, BASE_DEPENDENCIES, {
+		'liferay-frontend-theme-styled': '~2.0.0',
+		'liferay-frontend-theme-unstyled': '~2.1.0',
+	}),
 	'7.1': BASE_DEPENDENCIES,
 	'7.2': BASE_DEPENDENCIES,
 };
