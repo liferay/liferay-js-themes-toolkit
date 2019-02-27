@@ -26,6 +26,9 @@ module.exports = Object.assign({}, DEPENDENCIES, {
 	 * Utility function for creating a string suitable for injection into a
 	 * package.json "dependencies" section.
 	 *
+	 * @param {string} [version=BASE] - The desired target version.
+	 * @return {string} Dependencies snippet for use in package.json template
+	 *
 	 * TODO: don't do this; generate JSON from an object instead, using
 	 * `JSON.stringify`.
 	 */
