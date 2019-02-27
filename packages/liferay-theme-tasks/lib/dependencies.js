@@ -8,7 +8,6 @@ const BASE_DEPENDENCIES = Object.freeze({
 	'liferay-frontend-theme-classic-web': '2.0.2',
 	'liferay-frontend-theme-styled': '3.0.13',
 	'liferay-frontend-theme-unstyled': '3.0.13',
-	'liferay-theme-deps-normalize': '^8.0.0-rc.3',
 });
 
 /**
