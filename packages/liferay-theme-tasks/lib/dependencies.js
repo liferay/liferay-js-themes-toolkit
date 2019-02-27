@@ -38,7 +38,7 @@ module.exports = Object.assign({}, DEPENDENCIES, {
 		let output = [];
 		const deps = DEPENDENCIES[version];
 		Object.keys(deps).forEach(pkg => {
-			output.push(`\t"${pkg}": "${deps[pkg]}"`);
+			output.push(`\t\t"${pkg}": "${deps[pkg]}"`);
 		});
 		return output.join(',\n');
 	},
