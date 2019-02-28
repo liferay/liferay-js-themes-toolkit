@@ -49,9 +49,7 @@ it('isSassPartial should return true for partial scss file names', () => {
 });
 
 it('resolveDependency should return resolved path of dependency', () => {
-	const cssPath = util.resolveDependency(
-		'liferay-frontend-common-css'
-	);
+	const cssPath = util.resolveDependency('liferay-frontend-common-css');
 
 	expect(cssPath).toBeTruthy();
 	expect(cssPath).not.toMatch(/liferay-theme-deps/);
