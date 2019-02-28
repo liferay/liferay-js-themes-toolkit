@@ -142,7 +142,11 @@ function resolveDependency(dependency, version) {
 		return customPath;
 	}
 
-	return path.dirname(require.resolve(dependency));
+	// This could be just `path.dirname(require.resolve(dependency))` if it
+	// weren't for Jest, which overwrites `require` in a way that prevents it
+	// from finding anything outside the project directory (which means that our
+	// tests that set up temporary themes in a temporary directory don't work).
+	return path.dirname(resolve.sync(dependency, {basedir: process.cwd()}));
 }
 
 module.exports = {

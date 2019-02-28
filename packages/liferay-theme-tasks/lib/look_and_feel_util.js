@@ -1,6 +1,7 @@
 const _ = require('lodash');
 const fs = require('fs-extra');
 const path = require('path');
+const resolve = require('resolve');
 const util = require('util');
 const xml2js = require('xml2js');
 
@@ -148,7 +149,7 @@ function mergeLookAndFeelJSON(themePath, lookAndFeelJSON, cb) {
 			lookAndFeelJSON = mergeJSON(lookAndFeelJSON, json);
 		}
 
-		let themeInfo = require(path.join(themePath, 'package.json'))
+		let themeInfo = require(resolve.sync(path.join(themePath, 'package.json'), {basedir: themePath}))
 			.liferayTheme;
 
 		let baseTheme = themeInfo.baseTheme;

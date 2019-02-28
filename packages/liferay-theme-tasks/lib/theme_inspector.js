@@ -1,4 +1,5 @@
 const path = require('path');
+const resolve = require('resolve');
 
 const TEMPLATE_LANG_FTL = 'ftl';
 const TEMPLATE_LANG_VM = 'vm';
@@ -20,7 +21,8 @@ function getBaseThemeGlob(themePath) {
 }
 
 function getLiferayThemeJSON(themePath) {
-	return require(path.join(themePath, 'package.json')).liferayTheme;
+	const target = path.join(themePath, 'package.json');
+	return resolve.sync(target, {basedir: themePath});
 }
 
 module.exports = {getBaseThemeGlob, getLiferayThemeJSON};

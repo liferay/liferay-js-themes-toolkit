@@ -1,4 +1,5 @@
 const _ = require('lodash');
+const child_process = require('child_process');
 const fs = require('fs-extra');
 const parseString = require('xml2js').parseString;
 const path = require('path');
@@ -53,6 +54,7 @@ describe('using lib_sass', () => {
 		});
 
 		tempPath = config.tempPath;
+		child_process.spawnSync('npm', ['i']);
 
 		buildPath = path.join(tempPath, config.registerTasksOptions.pathBuild);
 

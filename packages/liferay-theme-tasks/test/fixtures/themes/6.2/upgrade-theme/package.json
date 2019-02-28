@@ -11,9 +11,13 @@
 		"version": "6.2"
 	},
 	"devDependencies": {
-		"gulp": "^3.8.10",
-		"liferay-theme-tasks": "*",
-		"liferay-theme-deps-6.2": "*"
+		"compass-mixins": "0.12.10",
+		"gulp-sass": "3.2.0",
+		"liferay-frontend-common-css": "1.0.4",
+		"liferay-frontend-theme-classic-web": "2.0.2",
+		"liferay-frontend-theme-styled": "3.0.13",
+		"liferay-frontend-theme-unstyled": "3.0.13",
+		"liferay-theme-tasks": "*"
 	},
 	"publishConfig": {
 		"tag": "6_2_x"
