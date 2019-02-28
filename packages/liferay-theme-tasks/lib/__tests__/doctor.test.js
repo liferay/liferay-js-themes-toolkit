@@ -35,16 +35,23 @@ afterEach(() => {
 	testUtil.restoreConsole();
 });
 
-it('should throw appropriate error message', () => {
+it('reports missing dependencies', () => {
 	const pkgJsonPath = path.join(__dirname, './fixtures/doctor/_package.json');
 	const pkgJson = require(pkgJsonPath);
+	delete pkgJson.dependencies['liferay-frontend-common-css'];
 
 	expect(() =>
 		doctor({themeConfig: pkgJson, haltOnMissingDeps: true, tasks: []})
-	).toThrow(new Error('Missing 1 theme dependencies'));
+	).toThrow(new Error('Missing 1 theme dependency'));
+
+	delete pkgJson.dependencies['liferay-frontend-theme-unstyled'];
+
+	expect(() =>
+		doctor({themeConfig: pkgJson, haltOnMissingDeps: true, tasks: []})
+	).toThrow(new Error('Missing 2 theme dependencies'));
 });
 
-it('should look for dependencies regardless if devDependency or not', () => {
+it('finds dependencies regardless if devDependency or not', () => {
 	const pkgJsonPath = path.join(
 		__dirname,
 		'./fixtures/doctor/_package_mixed_dependencies.json'
@@ -56,7 +63,7 @@ it('should look for dependencies regardless if devDependency or not', () => {
 	).not.toThrow();
 });
 
-it('should remove supportCompass', () => {
+it('removes supportCompass', () => {
 	const pkgJsonPath = path.join(tempPath, 'package.json');
 	const pkgJson = require(pkgJsonPath);
 

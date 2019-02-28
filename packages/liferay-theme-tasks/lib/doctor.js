@@ -137,7 +137,8 @@ function getMissingDeps(version, dependencies) {
 
 function haltTask(missingDeps) {
 	if (missingDeps > 0) {
-		throw new Error('Missing ' + missingDeps + ' theme dependencies');
+		const dependencies = missingDeps === 1 ? 'dependency' : 'dependencies';
+		throw new Error(`Missing ${missingDeps} theme ${dependencies}`);
 	}
 }
 
