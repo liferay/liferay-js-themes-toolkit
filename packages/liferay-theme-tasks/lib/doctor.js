@@ -2,6 +2,7 @@ const _ = require('lodash');
 const colors = require('ansi-colors');
 const log = require('fancy-log');
 
+const requiredDependencies = require('./dependencies');
 const lfrThemeConfig = require('./liferay_theme_config');
 
 // This array contains all theme versions supported for non-upgrade tasks
@@ -108,15 +109,23 @@ function checkDependencySources(liferayTheme) {
 }
 
 function checkMissingDeps(version, dependencies) {
-	let missingDeps = 0;
+	const missingDeps = getMissingDeps(version, dependencies);
+	logMissingDeps(missingDeps);
+	return missingDeps.length;
+}
 
-	missingDeps = logMissingDeps(
-		dependencies,
-		`liferay-theme-deps-${version}`,
-		missingDeps
-	);
-
-	return missingDeps;
+function getMissingDeps(version, dependencies) {
+	return Object.keys(requiredDependencies[version])
+		.map(key => {
+			return [key, requiredDependencies[version][key]];
+		})
+		.filter(([name, version]) => {
+			// For simplicity, require a perfect version match.
+			return (
+				!dependencies.hasOwnProperty(name) ||
+				dependencies[name] !== version
+			);
+		});
 }
 
 function haltTask(missingDeps) {
@@ -137,17 +146,18 @@ function logLocalDependencies(localDependencies) {
 	log(colors.yellow('Local module dependencies:'), dependenciesString);
 }
 
-function logMissingDeps(dependencies, moduleName, missingDeps) {
-	if (!dependencies[moduleName]) {
+function logMissingDeps(missingDeps) {
+	if (missingDeps.length) {
+		const dependencies = missingDeps
+			.map(([name, version]) => {
+				return `${name}@${version}`;
+			})
+			.join(' ');
 		log(
 			colors.red('Warning:'),
 			'You must install the correct dependencies, please run',
-			colors.cyan('npm i --save-dev ' + moduleName),
+			colors.cyan('npm i --save-dev ' + dependencies),
 			'from your theme directory.'
 		);
-
-		missingDeps++;
 	}
-
-	return missingDeps;
 }
