@@ -89,6 +89,11 @@ module.exports = yeoman.generators.Base.extend({
 				}
 			);
 
+			this.fs.copy(
+				this.templatePath('normalize.js'),
+				this.destinationPath('normalize.js')
+			);
+
 			var customCssName = '_custom.scss';
 
 			this.fs.copy(
