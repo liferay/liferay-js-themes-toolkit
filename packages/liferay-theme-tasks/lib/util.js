@@ -129,11 +129,7 @@ function isSassPartial(name) {
 	return _.startsWith(path.basename(name), '_');
 }
 
-function resolveDependency(dependency, version, dirname) {
-	if (_.isUndefined(dirname)) {
-		dirname = true;
-	}
-
+function resolveDependency(dependency, version) {
 	const customPath = getCustomDependencyPath(dependency);
 
 	if (customPath) {
@@ -146,19 +142,7 @@ function resolveDependency(dependency, version, dirname) {
 		return customPath;
 	}
 
-	const depsPath = getDepsPath(pkg, dependency, version);
-
-	const dependencyPath = resolve.sync(dependency, {
-		basedir: depsPath,
-	});
-
-	let resolvedPath = require.resolve(dependencyPath);
-
-	if (dirname) {
-		resolvedPath = path.dirname(resolvedPath);
-	}
-
-	return resolvedPath;
+	return path.dirname(require.resolve(dependency));
 }
 
 module.exports = {
@@ -189,20 +173,6 @@ function getCustomDependencyPath(dependency) {
 	return customPath;
 }
 
-function getDepsPath(pkg, dependency, version) {
-	if (hasDependency(pkg, dependency)) {
-		return process.cwd();
-	}
-
-	version = version || themeConfig.version;
-
-	const depsPath = path.dirname(
-		require.resolve(`liferay-theme-deps-${version}`)
-	);
-
-	return depsPath;
-}
-
 function hasDependency(pkg, dependency) {
 	const themeDependencies = _.assign(
 		{},
@@ -225,7 +195,6 @@ function validateCustomDependencyPath(customPath) {
 if (typeof jest !== 'undefined') {
 	Object.assign(module.exports, {
 		getCustomDependencyPath,
-		getDepsPath,
 		hasDependency,
 		validateCustomDependencyPath,
 	});

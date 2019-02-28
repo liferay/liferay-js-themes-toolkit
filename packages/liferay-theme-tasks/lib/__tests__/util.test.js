@@ -49,20 +49,12 @@ it('isSassPartial should return true for partial scss file names', () => {
 });
 
 it('resolveDependency should return resolved path of dependency', () => {
-	const unstyledPath = util.resolveDependency(
-		'liferay-frontend-theme-unstyled',
-		'7.0'
+	const cssPath = util.resolveDependency(
+		'liferay-frontend-common-css'
 	);
 
-	expect(unstyledPath).toBeTruthy();
-
-	const styledPath = util.resolveDependency(
-		'liferay-frontend-theme-styled',
-		'7.0'
-	);
-
-	expect(styledPath).toBeTruthy();
-	expect(!/liferay-theme-deps-7\.0/.test(styledPath)).toBeTruthy();
+	expect(cssPath).toBeTruthy();
+	expect(cssPath).not.toMatch(/liferay-theme-deps/);
 });
 
 it('getCustomDependencyPath should return custom dependency paths set in node env variables', () => {
@@ -88,30 +80,6 @@ it('getCustomDependencyPath should return custom dependency paths set in node en
 	expect(() => {
 		util.getCustomDependencyPath(STYLED);
 	}).toThrow();
-});
-
-it('getDepsPath should return preset path or cwd of theme if dependency is explicitly defined in dependencies', () => {
-	let depsPath = util.getDepsPath(
-		{
-			dependencies: {},
-		},
-		'liferay-frontend-theme-styled',
-		'7.0'
-	);
-
-	expect(path.basename(depsPath)).toEqual('liferay-theme-deps-7.0');
-
-	depsPath = util.getDepsPath(
-		{
-			dependencies: {
-				'liferay-frontend-theme-styled': '2.0.1',
-			},
-		},
-		'liferay-frontend-theme-styled',
-		'7.0'
-	);
-
-	expect(path.basename(depsPath)).toBe(themeName);
 });
 
 it('hasDependency should return truthy value if dependency is defined in either dependencies or devDependencies', () => {

@@ -43,8 +43,7 @@ function _afterPromptThemeSource(answers, promptInstance) {
 		);
 	} else if (themeSource === 'classic') {
 		let classicPath = themeUtil.resolveDependency(
-			divert('dependencies').getDependencyName('classic'),
-			promptInstance.themeConfig.version
+			divert('dependencies').getDependencyName('classic')
 		);
 
 		promptInstance.done({

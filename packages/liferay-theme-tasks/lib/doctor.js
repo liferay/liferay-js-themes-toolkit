@@ -115,6 +115,13 @@ function checkMissingDeps(version, dependencies) {
 }
 
 function getMissingDeps(version, dependencies) {
+	if (!requiredDependencies.hasOwnProperty(version)) {
+		console.log(
+			`No explicit version dependencies declared for ${version}; ` +
+				'falling back to "BASE" dependencies'
+		);
+		version = 'BASE';
+	}
 	return Object.keys(requiredDependencies[version])
 		.map(key => {
 			return [key, requiredDependencies[version][key]];

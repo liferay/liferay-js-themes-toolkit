@@ -11,7 +11,6 @@ const themeUtil = require('../../util');
 
 const moduleNamesMap = {
 	classic: 'liferay-frontend-theme-classic-web',
-	mixins: 'liferay-frontend-common-css',
 	styled: 'liferay-frontend-theme-styled',
 	unstyled: 'liferay-frontend-theme-unstyled',
 };

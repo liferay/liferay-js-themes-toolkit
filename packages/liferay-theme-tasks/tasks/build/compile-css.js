@@ -107,9 +107,7 @@ function getPostCSSOptions(config) {
 
 function getSassIncludePaths() {
 	let includePaths = [
-		themeUtil.resolveDependency(
-			divert('dependencies').getDependencyName('mixins')
-		),
+		themeUtil.resolveDependency('liferay-frontend-common-css'),
 	];
 
 	includePaths = concatBourbonIncludePaths(includePaths);
