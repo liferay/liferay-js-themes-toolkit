@@ -52,10 +52,7 @@ module.exports = function(options) {
 		const themeConfig = lfrThemeConfig.getConfig();
 
 		let gulpIf = require('gulp-if');
-		let gulpSass = themeUtil.requireDependency(
-			'gulp-sass',
-			themeConfig.version
-		);
+		let gulpSass = require('gulp-sass');
 		let gulpSourceMaps = require('gulp-sourcemaps');
 
 		let sassOptions = getSassOptions(options.sassOptions, {
