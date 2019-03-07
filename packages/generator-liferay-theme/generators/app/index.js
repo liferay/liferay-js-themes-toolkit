@@ -8,7 +8,7 @@ var path = require('path');
 var yeoman = require('yeoman-generator');
 var yosay = require('yosay');
 
-var lookup = require('liferay-theme-tasks/lib/lookup');
+var lookup = require('../../../liferay-theme-tasks/lib/lookup');
 
 module.exports = yeoman.generators.Base.extend({
 	initializing() {
@@ -76,6 +76,8 @@ module.exports = yeoman.generators.Base.extend({
 			);
 
 			this.template('gulpfile.js', 'gulpfile.js', this);
+
+			this.template('webpack.config.js', 'webpack.config.js', this);
 		},
 
 		projectfiles() {
@@ -111,6 +113,8 @@ module.exports = yeoman.generators.Base.extend({
 				'src/WEB-INF/liferay-look-and-feel.xml',
 				this
 			);
+
+
 		},
 	},
 
