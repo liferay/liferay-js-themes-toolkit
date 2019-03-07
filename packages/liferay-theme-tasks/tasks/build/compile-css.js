@@ -60,7 +60,17 @@ module.exports = function(options) {
 			sourceMap: true,
 		});
 
+		// Store sassOptions to be able to use them later in webpack
+		if (!storage.get('sassOptions')) {
+			storage.set('sassOptions', sassOptions);
+		}
+
 		const postCSSOptions = getPostCSSOptions(options.postcss);
+
+		// Store postCSSOptions to be able to use them later in webpack
+		if (!storage.get('postCSSOptions')) {
+			storage.set('postCSSOptions', postCSSOptions);
+		}
 
 		const cssBuild = pathBuild + '/_css';
 
