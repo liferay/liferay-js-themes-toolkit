@@ -244,24 +244,33 @@ module.exports = function(options) {
 
 	gulp.task('build:r2', function() {
 		const r2 = require('gulp-liferay-r2-css');
-		var map = require('map-stream');
-		const fs = require('fs');
+		const map = require('map-stream');
 
 		return gulp
-			.src([pathBuild + '/css/*.css','!'+pathBuild+'/css/*_rtl.css'])
-			.pipe(plugins.rename({
-				suffix: '_rtl',
-			}))
+			.src([pathBuild + '/css/*.css', '!' + pathBuild + '/css/*_rtl.css'])
+			.pipe(
+				plugins.rename({
+					suffix: '_rtl',
+				})
+			)
 			.pipe(r2())
-			.pipe(map(function (file, cb) {
-				fs.stat(file.path, function(err, data) {
-					if (!err) {
-						var content = fs.readFileSync(file.path, 'utf8');
-						file.contents = Buffer.from(file.contents.toString('utf8').concat(content));
-					}
-				});
-				cb(null, file);
-			}))
+			.pipe(
+				map(function(file, cb) {
+					fs.stat(file.path)
+						.then(() => {
+							// Overrides file exists; append to contents.
+							file.contents = Buffer.from(
+								file.contents
+									.toString('utf8')
+									.concat(fs.readFileSync(file.path, 'utf8'))
+							);
+							cb(null, file);
+						})
+						.catch(() => {
+							cb(null, file);
+						});
+				})
+			)
 			.pipe(gulp.dest(pathBuild + '/css'));
 	});
 
