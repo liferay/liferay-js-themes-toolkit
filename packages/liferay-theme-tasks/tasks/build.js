@@ -256,19 +256,20 @@ module.exports = function(options) {
 			.pipe(r2())
 			.pipe(
 				map(function(file, cb) {
-					fs.stat(file.path)
-						.then(() => {
-							// Overrides file exists; append to contents.
+					fs.stat(file.path, function(err, data) {
+						if (err) {
+							// No overrides file.
+						} else {
+							// Append overrides to content.
 							file.contents = Buffer.from(
 								file.contents
 									.toString('utf8')
 									.concat(fs.readFileSync(file.path, 'utf8'))
 							);
-							cb(null, file);
-						})
-						.catch(() => {
-							cb(null, file);
-						});
+						}
+					});
+
+					cb(null, file);
 				})
 			)
 			.pipe(gulp.dest(pathBuild + '/css'));
