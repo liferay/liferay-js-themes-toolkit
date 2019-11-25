@@ -6,7 +6,7 @@
 		"compass-mixins": "^0.12.8",
 		"cross-spawn": "^2.2.3",
 		"del": "^4.0.0",
-		"diff": "^1.4.0",
+		"diff": "^4.0.1",
 		"event-stream": "^4.0.0",
 		"fs-extra": "^0.24.0",
 		"globby": "^4.0.0",
