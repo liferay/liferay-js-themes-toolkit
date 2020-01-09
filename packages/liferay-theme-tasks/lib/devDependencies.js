@@ -21,8 +21,8 @@ module.exports = {
 		'compass-mixins': strict('0.12.10'),
 		gulp: '3.9.1',
 		'liferay-frontend-common-css': strict('1.0.4'),
-		'liferay-frontend-theme-styled': strict('4.0.7'),
-		'liferay-frontend-theme-unstyled': strict('4.0.4'),
+		'liferay-frontend-theme-styled': strict('4.0.21'),
+		'liferay-frontend-theme-unstyled': strict('4.0.17'),
 		'liferay-theme-tasks': '^9.4.3',
 	},
 	optional: {
