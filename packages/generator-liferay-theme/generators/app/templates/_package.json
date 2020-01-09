@@ -1,8 +1,8 @@
 {
-	"devDependencies": <%- devDependencies %>,
-	"keywords": [
-		"liferay-theme"
-	],
+	"name": "<%= themeDirName %>",
+	"version": "<%= packageVersion %>",
+	"main": "package.json",
+	"keywords": ["liferay-theme"],
 	"liferayTheme": {
 		"baseTheme": "styled",
 		"fontAwesome": <%= fontAwesome %>,
@@ -10,7 +10,9 @@
 		"templateLanguage": "ftl",
 		"version": "<%= liferayVersion %>"
 	},
-	"main": "package.json",
-	"name": "<%= themeDirName %>",
-	"version": "<%= packageVersion %>"
+	"devDependencies": <%- devDependencies %>,
+	"scripts": {
+		"build": "gulp build",
+		"deploy": "gulp deploy"
+	}
 }
