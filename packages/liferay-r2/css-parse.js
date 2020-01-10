@@ -73,16 +73,10 @@ module.exports = function(css, options) {
 	 */
 
 	function error(msg, start) {
-		var err = new Error(
-			msg +
-				" in file '" +
-				filename +
-				"' at line " +
-				lineno +
-				' column ' +
-				column
-		);
+		var err = new Error(`${filename} (${lineno}:${column}) ${msg}`);
 		err.position = new Position(start);
+		err.filename = filename;
+		err.description = msg;
 		throw err;
 	}
 
