@@ -1,3 +1,9 @@
+## [v9.5.0](https://github.com/liferay/liferay-themes-sdk/tree/v9.5.0) (2020-01-24)
+
+[Full changelog](https://github.com/liferay/liferay-themes-sdk/compare/v9.4.3...v9.5.0)
+
+-   Merging to continue with (milestone)[https://github.com/liferay/liferay-js-themes-toolkit/milestone/11] development. ([\#422](https://github.com/liferay/liferay-themes-sdk/pull/422))
+
 ## [v9.4.3](https://github.com/liferay/liferay-js-themes-toolkit/tree/v9.4.3) (2019-12-12)
 
 [Full changelog](https://github.com/liferay/liferay-js-themes-toolkit/compare/v9.4.2...v9.4.3)
