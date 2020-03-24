@@ -26,5 +26,5 @@
 	"scripts": {
 		"release:snapshot": "node ../../scripts/release-snapshot.js"
 	},
-	"version": "9.5.0"
+	"version": "10.0.0"
 }
