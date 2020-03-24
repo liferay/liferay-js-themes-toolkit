@@ -67,7 +67,8 @@
 		"directory": "packages/liferay-theme-tasks"
 	},
 	"scripts": {
-		"release:snapshot": "node ../../scripts/release-snapshot.js"
+		"postversion": "liferay-js-publish",
+		"preversion": "yarn ci"
 	},
 	"version": "10.0.0"
 }
