@@ -27,7 +27,7 @@
 		"liferay-frontend-common-css": "^1.0.4",
 		"liferay-npm-build-tools-common": "^2.17.1",
 		"lodash": "^4.17.11",
-		"minimist": "^1.1.0",
+		"minimist": "^1.2.5",
 		"node-bourbon": "4.2.3",
 		"npm-keyword": "^5.0.0",
 		"opn": "^5.4.0",
