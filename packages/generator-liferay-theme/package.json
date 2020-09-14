@@ -42,7 +42,7 @@
 		"inquirer": "^0.12.0",
 		"liferay-npm-build-tools-common": "^2.17.1",
 		"liferay-theme-tasks": "^10.0.0",
-		"lodash": "^4.17.11",
+		"lodash": "^4.17.20",
 		"rimraf": "^3.0.0",
 		"semver": "^7.1.1",
 		"xml2js": "^0.4.23",
