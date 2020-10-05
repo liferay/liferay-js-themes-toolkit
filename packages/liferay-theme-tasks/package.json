@@ -29,7 +29,7 @@
 		"lodash": "^4.17.11",
 		"minimist": "^1.1.0",
 		"node-bourbon": "4.2.3",
-		"npm-keyword": "^5.0.0",
+		"npm-keyword": "^6.1.0",
 		"opn": "^5.4.0",
 		"package-json": "^5.0.0",
 		"plugin-error": "^1.0.1",
