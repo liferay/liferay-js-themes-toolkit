@@ -2,7 +2,7 @@
 	"devDependencies": {
 		"chalk": "^3.0.0",
 		"cross-spawn": "^7.0.1",
-		"eslint": "^6.5.1",
+		"eslint": "^7.11.0",
 		"eslint-config-liferay": "^13.0.0",
 		"fs-extra": "^8.1.0",
 		"jest": "^24.1.0",
