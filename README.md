@@ -1,3 +1,7 @@
+> :warning: The contents of this branch have been migrated [to the `liferay/liferay-frontend-projects` monorepo](https://github.com/liferay/liferay-frontend-projects) and more specifically to the [to the `maintenance/projects/js-themes-toolkit-v8-x` directory](https://github.com/liferay/liferay-frontend-projects/tree/master/maintenance/projects/js-themes-toolkit-v8-x). Development will continue there, and this repo will be archived (ie. switched to read-only mode).
+
+---
+
 # liferay-js-themes-toolkit
 
 ## Overview
